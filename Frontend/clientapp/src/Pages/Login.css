@@ -1,0 +1,77 @@
+.background {
+  background-color: navy;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/004/837/104/original/dark-blue-indigo-watercolor-splash-background-vector.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+
+  /* background-color: transparent;
+  background-image: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;  */
+}
+
+.login-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.links {
+  text-decoration: none;
+  color: #2b2d42;
+}
+
+.login-container {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  background-color: #ffffff;
+  padding: 70px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #e0e0e0; /* Adjust this value for a lighter grey */
+  width: 100%;
+}
+
+button {
+  background-color: #2b2d42;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d202e;
+}
+
+a {
+  color: #2b2d42;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

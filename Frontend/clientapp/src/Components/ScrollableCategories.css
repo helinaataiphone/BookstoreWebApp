@@ -1,0 +1,80 @@
+.scrollable-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  justify-content: flex-start; /* Align items to the start */
+}
+
+.scrollable-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for cleaner UI */
+}
+
+.category-box {
+  flex: 0 0 auto; /* Prevent flex shrinking */
+  width: 300px; /* Default width */
+  margin: 0 15px; /* Margin between category boxes */
+}
+
+.category-box h3 {
+  margin-top: 10px;
+  font-size: 16px; /* Default font size */
+  font-weight: bold;
+}
+
+.category-box {
+  flex: 0 0 auto; /* Prevent flex shrinking */
+  width: 300px; /* Default width */
+  margin: 0 15px; /* Margin between category boxes */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for smooth hover effect */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.category-box:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a shadow for emphasis */
+}
+
+.category-box h3 {
+  margin-top: 10px;
+  font-size: 16px; /* Default font size */
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .category-box {
+    width: 250px; /* Adjusted width for medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .category-box {
+    width: 200px; /* Further adjusted width for smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .category-box {
+    width: 150px; /* Smallest width for mobile screens */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .category-box {
+    width: 250px; /* Adjusted width for medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .category-box {
+    width: 200px; /* Further adjusted width for smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .category-box {
+    width: 150px; /* Smallest width for mobile screens */
+  }
+}

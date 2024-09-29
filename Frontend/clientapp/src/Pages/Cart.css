@@ -1,0 +1,121 @@
+/* Base styles */
+.cart-container {
+  width: 100%;
+  max-width: 800px; /* Adjust max-width for better layout control */
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.item {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.item-image {
+  width: 25%; /* Increased size for better visibility */
+  max-width: 200px; /* Maximum width limit */
+  margin-right: 20px;
+}
+
+.item-details {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-info {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.item-title {
+  font-size: 3rem; /* Larger font size for better visibility */
+  margin: 5px 0;
+}
+
+.item-price {
+  font-weight: bold;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.quantity-button {
+  background-color: #07253c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 12px;
+  font-size: 16px; /* Increase size for better interaction */
+  cursor: pointer;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.delete-icon {
+  color: #07253c; /* Navy blue color for visibility */
+  margin-left: 20px;
+  font-size: 30px; /* Ensure it's visible */
+  background: none;
+  cursor: pointer;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.add-more-items-button,
+.proceed-to-checkout-button {
+  flex: 1;
+  margin: 5px;
+  padding: 12px 0;
+  background-color: #07253c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.subtotal {
+  font-size: 20px; /* Larger font size for subtotal */
+  font-weight: bold;
+  text-align: right;
+  margin-top: 20px;
+}
+
+/* Media Query for mobile devices */
+@media (max-width: 600px) {
+  .quantity-button {
+    padding: 5px 8px; /* Smaller padding for mobile */
+    font-size: 14px; /* Smaller font size for mobile */
+  }
+
+  .quantity-input {
+    width: 40px; /* Smaller width for the input field on mobile */
+  }
+
+  .delete-icon {
+    font-size: 20px; /* Smaller delete icon for mobile */
+    margin-left: 5px; /* Less space on mobile */
+  }
+  .item-title {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,62 @@
+.background {
+  background-color: navy;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/004/837/104/original/dark-blue-indigo-watercolor-splash-background-vector.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.signup-form {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  background-color: #ffffff;
+  padding: 70px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.signup-form h4 {
+  color: #2b2d42;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #e0e0e0;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #2b2d42;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d202e;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .signup-form {
+    padding: 20px;
+  }
+}

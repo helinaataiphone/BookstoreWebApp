@@ -1,0 +1,85 @@
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns for larger screens */
+  gap: 20px; /* Space between items */
+  padding: 20px; /* Padding around the grid */
+  justify-content: center; /* Center items if the last row isn't full */
+  box-sizing: border-box;
+}
+
+.category-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Ensures no underline */
+  color: inherit;
+}
+
+.category-link a {
+  text-decoration: none; /* Ensures no underline on hover */
+  color: inherit; /* Use the parent's text color */
+}
+
+.category-link:hover,
+.category-link a:hover {
+  text-decoration: none; /* Ensures no underline on hover */
+}
+
+.category-image-container {
+  width: 100%;
+  max-width: 250px; /* Maximum width for the image container */
+  height: auto;
+  aspect-ratio: 1; /* Maintain a square aspect ratio */
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-title {
+  margin-top: 10px;
+  font-size: 25px;
+  font-family: Tahoma;
+  color: rgb(4, 4, 59);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .categories-container {
+    grid-template-columns: repeat(3, 1fr); /* Three columns on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .categories-container {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Two columns on small tablets and large phones */
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on mobile phones */
+  }
+
+  .category-image-container {
+    max-width: 140px; /* Smaller images on mobile */
+  }
+
+  .category-title {
+    font-size: 12px; /* Smaller font size for mobile */
+  }
+}

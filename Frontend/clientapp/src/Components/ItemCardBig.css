@@ -1,0 +1,124 @@
+/* Base styles */
+.item-card {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f4f1ea;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.item-card:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.item-card-container {
+  padding-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #f4f1ea;
+  border-radius: 8px;
+}
+
+.item-image img {
+  max-width: 150px;
+  border-radius: 8px;
+}
+
+.item-details {
+  flex-grow: 1;
+  padding-left: 20px;
+  color: #333;
+}
+
+.item-details h6 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.item-details p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.item-actions label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+.item-actions select {
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.item-actions button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.item-actions button:hover {
+  background-color: #c9302c;
+}
+
+.item-price {
+  align-self: flex-end;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .item-card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item-details {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .item-details h6 {
+    font-size: 16px; /* Reduce font size for mobile */
+  }
+
+  .item-details p {
+    font-size: 13px; /* Reduce font size for mobile */
+  }
+
+  .item-actions {
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .item-price {
+    margin-top: 15px;
+    font-size: 16px; /* Reduce font size for mobile */
+  }
+
+  .item-image img {
+    max-width: 100%; /* Make image full width on mobile */
+    margin-bottom: 10px;
+  }
+}

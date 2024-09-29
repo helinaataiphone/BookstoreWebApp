@@ -1,0 +1,9 @@
+.homeheader {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #2b2d42; /* Navy Blue */
+  padding: 20px 0;
+  border-bottom: 2px solid #edf2f4; /* White divider */
+  margin-bottom: 20px;
+}

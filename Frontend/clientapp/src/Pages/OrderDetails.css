@@ -1,0 +1,189 @@
+/* Global Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f8f9fa;
+  color: #333;
+}
+
+/* Header */
+.page-header {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #002855;
+}
+
+/* Main Container */
+.order-main-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+/* Delivery Details */
+.delivery-details {
+  padding: 25px;
+  background: #f1f3f5;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.delivery-details h2 {
+  font-size: 1.8rem;
+  color: #002855;
+  margin-bottom: 15px;
+}
+
+.delivery-details p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: #666;
+}
+
+/* Order Summary */
+.order-summary {
+  padding: 25px;
+  background: #f1f3f5;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  margin-top: 20px;
+}
+
+.order-summary h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.order-summary p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: #666;
+}
+
+/* Cancel Button */
+.cancel-button {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Ensure space between total and button */
+  display: block;
+  width: 100%; /* Full width for mobile */
+}
+
+.cancel-button:hover {
+  background-color: #ff7875;
+}
+
+/* Item Styles */
+.item {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item img {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.item img:hover {
+  transform: scale(1.05);
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-details p {
+  margin: 3px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Status Styling */
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #d8b13c;
+}
+
+.status.shipped {
+  background-color: #4caf50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .order-main-container {
+    grid-template-columns: 1fr;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-details p,
+  .order-summary p {
+    font-size: 0.9rem;
+  }
+
+  .page-header h1,
+  .delivery-details h2,
+  .order-summary h2 {
+    font-size: 1.5rem;
+  }
+
+  .cancel-button {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .item img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .main-container,
+  .delivery-details,
+  .order-summary {
+    padding: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .cancel-button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}

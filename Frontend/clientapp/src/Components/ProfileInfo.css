@@ -1,0 +1,183 @@
+body {
+  background-color: #ffffff; /* Set background color to white */
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.profile-info-container {
+  display: flex;
+  padding: 24px;
+  background-color: #ffffff; /* Ensure background color is white */
+  min-height: 100vh; /* Ensure it covers the full height of the viewport */
+  color: rgb(54, 49, 39);
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.avatar {
+  width: 150px; /* Set a bigger width */
+  height: 150px; /* Set a bigger height to keep it round */
+  border-radius: 50%; /* Keep the avatar round */
+  margin-bottom: 16px;
+}
+
+.profile-tabs {
+  margin-top: 16px;
+}
+
+/* Add styles for the tab buttons to match the theme */
+.tab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  color: #001f3f; /* Navy blue text color */
+  background-color: transparent; /* No background color */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition */
+  width: 150px;
+}
+
+.tab-button:hover {
+  transform: scale(1.1); /* Increase size on hover */
+  font-weight: bold; /* Make text bolder on hover */
+  color: #001f3f; /* Maintain navy blue text color */
+  background-color: transparent; /* No background color on hover */
+  box-shadow: none; /* No shadow */
+}
+
+.tab-button:active {
+  transform: scale(1); /* Reset transform on click */
+  background-color: transparent;
+  box-shadow: none; /* No shadow on click */
+}
+
+.right-side {
+  flex: 1;
+}
+
+.profile-details {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* .edit-button {
+  float: right;
+  background-color: #9f8a71;
+  color: rgb(54, 49, 39);
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #e0d8b4;
+  color: #333;
+} */
+
+.MuiTextField-root {
+  margin-bottom: 16px;
+}
+
+.MuiInputBase-input {
+  font-size: 16px; /* Increase font size */
+  color: #333; /* Darker text color */
+}
+
+@media (max-width: 768px) {
+  .profile-info-container {
+    flex-direction: column; /* Stack the layout vertically on smaller screens */
+    align-items: center;
+  }
+
+  .left-side {
+    margin-right: 0; /* Remove the margin on smaller screens */
+    margin-bottom: 16px; /* Add space between avatar and tabs */
+  }
+
+  .avatar {
+    width: 120px; /* Smaller avatar on small screens */
+    height: 120px;
+  }
+
+  .tab-button {
+    width: 100%; /* Make the tab buttons take up full width */
+    padding: 10px; /* Adjust padding */
+    max-width: 300px; /* Limit maximum width */
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar {
+    width: 100px; /* Even smaller avatar on very small screens */
+    height: 100px;
+  }
+
+  .tab-button {
+    padding: 8px; /* Smaller padding on very small screens */
+    max-width: 250px;
+  }
+}
+
+/* General styles for the text fields */
+.MuiTextField-root {
+  margin-bottom: 20px; /* Consistent bottom margin for spacing */
+}
+
+/* Input base styling */
+.MuiInputBase-root {
+  height: 56px; /* Uniform height */
+  border-radius: 8px; /* Rounded corners for the input field */
+  background-color: #fff; /* White background */
+  border: 1px solid #ccc; /* Subtle border */
+  font-size: 1.1rem; /* Slightly larger font size for better readability */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inner shadow for depth */
+}
+
+/* Input label styling */
+.MuiInputLabel-root {
+  font-size: 1.1rem; /* Match the font size of the input */
+  color: rgba(0, 0, 0, 0.6); /* Dim label color for less distraction */
+}
+
+/* Focus and hover styles for the input */
+.MuiInputBase-root:hover {
+  border-color: #aaa; /* Darker border on hover */
+}
+
+.Mui-focused .MuiInputBase-root {
+  border-color: #6200ea; /* Bright color on focus */
+  box-shadow: 0 0 0 2px rgba(98,0,234,0.2); /* Glow effect for focus */
+}
+
+/* Error styling */
+.Mui-error {
+  border-color: #f44336 !important; /* Red border for error */
+}
+
+.MuiFormHelperText-root.Mui-error {
+  font-size: 0.875rem; /* Slightly smaller font for error text */
+}
+/* Overrides for Material-UI TextFields */
+.MuiTextField-root .MuiOutlinedInput-root {
+  border: none !important;  /* Ensures no border */
+  outline: none !important; /* Removes focus outline */
+  background-color: transparent !important; /* Optional: Sets background to transparent */
+}
+
+
+
+/* If using the standard variant which might still show borders */
+.MuiInputBase-input {
+  border: none !important;
+}
+

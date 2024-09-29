@@ -1,0 +1,72 @@
+/* Override dialog content padding */
+.dialog-content {
+    padding: 20px !important;
+  }
+  
+  /* Override spacing for form elements */
+  .dialog-form-field {
+    margin-bottom: 20px !important;
+  }
+  
+  /* Ensure full-width for inputs and select elements */
+  .dialog-form-field input,
+  .dialog-form-field .MuiInputBase-root {
+    width: 100% !important;
+  }
+  
+  /* Full width for category select dropdown */
+  .dialog-form-field .MuiSelect-select {
+    width: 100% !important;
+  }
+  
+  /* Force spacing between images and the upload button */
+  .dialog-images {
+    margin-top: 20px !important;
+  }
+  
+  .dialog-images img {
+    width: 100% !important;
+    border-radius: 4px !important;
+    margin-top: 10px !important;
+  }
+  
+  /* Override button styles for image upload */
+  .dialog-upload-button {
+    margin-top: 20px !important;
+  }
+  
+  /* Override dialog actions spacing */
+  .dialog-actions {
+    padding: 16px !important;
+    justify-content: flex-end !important; /* Align buttons to the right */
+  }
+  
+  .dialog-actions button {
+    margin-left: 10px !important;
+  }
+  
+  /* Full-width select field options */
+  .dialog-form-field .MuiFormControl-root {
+    width: 100% !important;
+  }
+  
+  /* Override helper text color and size for errors */
+  .MuiFormHelperText-root {
+    color: red !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Force full-width for all text fields */
+  .MuiTextField-root {
+    width: 100% !important;
+  }
+  
+  /* Force full-width for the Select component */
+  .MuiSelect-root {
+    width: 100% !important;
+  }
+  /* If using the standard variant which might still show borders */
+.MuiInputBase-input {
+    border: none !important;
+  }
+  

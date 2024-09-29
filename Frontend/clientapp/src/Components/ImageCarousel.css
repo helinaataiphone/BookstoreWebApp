@@ -1,0 +1,48 @@
+.carousel {
+  position: relative;
+  width: 50vw; /* Half of the viewport width */
+  height: 50vw; /* Same height for aspect ratio consistency */
+  overflow: hidden;
+  margin: auto; /* Centering the carousel */
+}
+
+.carousel__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.9; /* Slightly transparent to show overlapping */
+}
+
+.item-0 {
+  width: 40%;
+  z-index: 4;
+  transform: translate(-40%, -40%);
+}
+.item-1 {
+  width: 35%;
+  z-index: 3;
+  transform: translate(20%, -30%);
+}
+.item-2 {
+  width: 30%;
+  z-index: 2;
+  transform: translate(-10%, 30%);
+}
+.item-3 {
+  width: 25%;
+  z-index: 1;
+  transform: translate(30%, 40%);
+}
+
+@media (max-width: 600px) {
+  .carousel {
+    width: 90vw;
+    height: 90vw;
+  }
+  .carousel__item {
+    /* Adjust sizes and positions for smaller screens */
+    opacity: 1; /* Remove transparency for better visibility on small devices */
+  }
+}

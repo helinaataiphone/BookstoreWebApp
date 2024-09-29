@@ -1,0 +1,226 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+}
+
+.navbar {
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.checkout-wrapper {
+  margin: 20px;
+}
+
+.checkout-container {
+  background-color: white;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+}
+
+.step span {
+  display: block;
+  background-color: #ddd;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  margin: auto;
+  color: black;
+}
+
+.step.active span {
+  background-color: #007bff;
+  color: white;
+}
+
+h2,
+h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-group label {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-right: px;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.primary-button {
+  background-color: #007bff;
+  margin-right: 10px;
+}
+
+.secondary-button {
+  background-color: #666;
+}
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.summary-details p,
+.summary-details strong {
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    display: block;
+  }
+
+  .steps {
+    flex-direction: column;
+  }
+
+  .step {
+    margin-bottom: 15px;
+  }
+
+  .checkout-container {
+    width: auto;
+    margin: 10px;
+  }
+
+  .order-summary {
+    margin-top: 30px;
+  }
+}
+
+.checkbox-label {
+  /* align-items: center; Ensures vertical centering of items within the label */
+  display: flex; /* Uses flexbox for better control over the alignment */
+}
+
+.big-button {
+  padding: 15px 30px; /* Larger button size */
+  font-size: 18px; /* Larger font size for button text */
+}
+
+.order-details {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc; /* Add border for clarity */
+  border-radius: 5px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  background: #f0f0f0; /* Placeholder background */
+}
+
+.item-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.payment-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.big-button {
+  padding: 15px 30px;
+  font-size: 18px;
+}
+
+.order-details {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .payment-form {
+    grid-template-columns: 1fr;
+  }
+}

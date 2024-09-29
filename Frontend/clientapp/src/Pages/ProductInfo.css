@@ -1,0 +1,161 @@
+/* ProductInfo.css */
+.cart-animation {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeInOut 2s forwards;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Modern fade-in and fade-out animation with slight slide */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+}
+
+/* Adjust size for mobile view */
+@media (max-width: 768px) {
+  .cart-animation {
+    font-size: 1rem;
+    width: 60%;
+    padding: 10px 20px;
+  }
+}
+
+/* Container Styling */
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+h2 {
+  font-weight: bold;
+  color: #333;
+}
+
+.text-primary {
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Button Styling */
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+/* Carousel Image Styling */
+.carousel img {
+  border-radius: 10px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Darker background for better visibility */
+  border-radius: 50%;
+}
+
+/* Alert Styling */
+.alert {
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    width: 90%; /* Ensure container does not touch the edge */
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .carousel {
+    width: 90%; /* Ensure carousel stays within 90% width */
+    margin: 0 auto; /* Center the carousel */
+  }
+
+  .carousel img {
+    max-height: 250px;
+  }
+
+  .btn {
+    width: 100%; /* Buttons are 90% width */
+    margin: 10px auto;
+  }
+
+  .text-primary {
+    font-size: 1.3rem;
+  }
+}

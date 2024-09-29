@@ -1,0 +1,85 @@
+/* Footer.css */
+
+.footer-container {
+  background: linear-gradient(
+    135deg,
+    #2b2d42,
+    #4a5c8b
+  ); /* Gradient background */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 20px;
+  border-top: 4px solid #ffffff; /* Top border for visual separation */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Add space between elements */
+}
+
+.social-media-links {
+  display: flex;
+  gap: 30px; /* Space between social media links */
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between the icon and text */
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+.footer-link:hover {
+  color: #9f8a71; /* Change color on hover */
+}
+
+.footer-icon {
+  width: 30px;
+  height: 30px;
+  filter: invert(100%); /* Make sure the icons are white */
+}
+
+.contact-info {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+/* Decorative divider */
+.footer-divider {
+  width: 50%;
+  border: 0;
+  border-top: 1px solid #ffffff;
+  margin: 20px 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .footer-content {
+    gap: 10px;
+  }
+
+  .social-media-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-link {
+    font-size: 1rem;
+  }
+
+  .footer-divider {
+    width: 80%;
+  }
+}

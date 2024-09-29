@@ -1,0 +1,123 @@
+.container {
+  margin-top: 24px;
+  padding: 0 16px;
+}
+
+/* Hero Section without Image */
+.hero-banner-no-image {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #2b2d42; /* Navy Blue Background */
+  color: #edf2f4; /* White Text */
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.hero-banner-no-image h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.hero-banner-no-image p {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+.cta-button {
+  background-color: #f72585; /* Accent Color */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #d61e6e;
+}
+
+/* Grid Layout */
+.grid-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Icon and Image Container */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Same height for image and icon */
+  width: 100%;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.item-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.icon-box {
+  font-size: 120px;
+  color: #2b2d42; /* Navy Blue for Icons */
+}
+
+/* Home Header */
+.homeheader {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #2b2d42; /* Navy Blue */
+  padding: 20px 0;
+  border-bottom: 2px solid #edf2f4; /* White divider */
+  margin-bottom: 20px;
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 600px) {
+  .grid-item {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 960px) {
+  .grid-item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid-item {
+    width: 33.3%;
+  }
+}
+
+/* Smooth hover effects */
+.item-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* .background {
+  background-color: #ffffff;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/004/837/104/original/dark-blue-indigo-watercolor-splash-background-vector.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+} */

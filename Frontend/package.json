@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.21.11",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^5.16.7",
+    "@stripe/react-stripe-js": "^2.8.0",
+    "@stripe/stripe-js": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/generator": "^7.25.0"
+  }
+}

@@ -1,0 +1,83 @@
+.background {
+  background-color: navy;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/004/837/104/original/dark-blue-indigo-watercolor-splash-background-vector.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.contact-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.spacer {
+  height: 10px; /* Adjust height as needed for spacing */
+}
+
+.contact-container {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  background-color: #ffffff;
+  padding: 70px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+button[type="submit"] {
+  background-color: #2b2d42;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #1d202e;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .form-row {
+    flex-direction: column; /* Stack inputs vertically on smaller screens */
+    gap: 20px;
+  }
+
+  .spacer {
+    height: 20px; /* Smaller spacer for compact layout */
+  }
+
+  button[type="submit"] {
+    padding: 10px 20px; /* Smaller button padding */
+  }
+}
