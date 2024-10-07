@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,20 +38,75 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    
     'api',
+    
+    'django_extensions',
     'rest_framework',
+    'rest_framework_simplejwt',
+    
+     # Allauth apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',  # You may skip this if you don't need social authentication
     'rest_framework.authtoken',
+    
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.AllowAny',
     ),
+}
+
+# Ensures that session cookies are sent over HTTPS
+SESSION_COOKIE_SECURE = True
+
+# Ensures that the CSRF cookie is sent over HTTPS
+CSRF_COOKIE_SECURE = True
+
+# Sets the session cookie to be accessible only by the server.
+SESSION_COOKIE_HTTPONLY = True
+
+# Restricts how cookies are sent with requests from external sites
+SESSION_COOKIE_SAMESITE = 'Lax'  # Can be 'Strict' for stricter enforcement
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # This should be set or default
+
+# Expire sessions when the user closes the browser
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Set session expiration to 1 day (86400 seconds)
+SESSION_COOKIE_AGE = 86400  # 1 day in seconds
+
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',  # Adjust to match your front-end URL
+]
+
+
+# settings.py
+
+STRIPE_SECRET_KEY = 'sk_test_51Q3OqUP5XSy2nJwrwc92naxBAqHYKy7VAhn5w0vog7MzGCGysQtOSkOSY4kOfPOVLltFM9sfP2lKJZzcTrA3hRIF00qB3s2Jk8'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Q3OqUP5XSy2nJwrIxaNaYnf5sgBuETOg9uT7sNW59UOkfbiNNxMLfypTyI33DAeEZ98qg3GNvIQPU9lheOcxvL200FFdMWx8c'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # Default Django authentication
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 MIDDLEWARE = [
@@ -60,8 +116,19 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+     # Allauth middleware
+    'allauth.account.middleware.AccountMiddleware',  # Add this line
+    
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://localhost:3000'] 
+
+
 
 ROOT_URLCONF = 'BookstoreBackend.urls'
 
@@ -82,26 +149,50 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'BookstoreBackend.wsgi.application'
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'mssql',
+#        'NAME': 'stmarybookstoredb',
+#        'USER': 'local_admin',
+#        'PASSWORD': 'Stmary1234',
+#        'HOST': 'bookstoreadmin.database.windows.net',
+#        'PORT': '1433',
+        
+#    }
+#}
+
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'stmarybookstoredb',
-        'USER': 'local_admin',
-        'PASSWORD': 'Stmary1234',
-        'HOST': 'bookstoreadmin.database.windows.net',
-        'PORT': '1433',
-        
+        'NAME': 'BookstoreDB',
+        'HOST': 'LAPTOP-ERGF04OG\\SQLEXPRESS01',  # The host as seen in your SSMS
+        'PORT': '',  # SQL Server usually runs on port 1433; leave blank if default
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',  # or the driver version you have installed
+            'extra_params': 'TrustServerCertificate=yes;',  # Helps avoid SSL related errors
+        },
     }
 }
 
 
+AUTH_USER_MODEL = 'api.Users'  
+SITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+SUPABASE_URL = "https://uldsagndgvnitbgbixeh.supabase.co"
+SUPABASE_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVsZHNhZ25kZ3ZuaXRiZ2JpeGVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjYzNjYyNTUsImV4cCI6MjA0MTk0MjI1NX0.DnXhcgY95rvqtUhwNXA-IbRhw-bfq2lxwkjEhIGSmYo"
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -109,6 +200,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,  # Set to a higher number based on your requirement
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -117,6 +211,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
@@ -140,3 +235,28 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+
+# reset password email in production
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'your-smtp-host.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER = 'your-email@example.com'
+#EMAIL_HOST_PASSWORD = 'your-email-password'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Email configuration for Gmail
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'minamdoss@outlook.com'
+EMAIL_HOST_PASSWORD = 'GOT Mina6'
+
+# Default email address to send from    
+DEFAULT_FROM_EMAIL = 'minamdoss@outlook.com'
