@@ -1,44 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Checkout.css";
 import NavBar from "../Components/NavBar";
 import { UserProvider } from "../Components/UserAdminContext";
-import  { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 function Checkout() {
   const [pickup, setPickup] = useState(false);
   const [deliveryOption, setDeliveryOption] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [step, setStep] = useState(1);
-  const navigate = useNavigate(); 
+  const [orderTotal, setOrderTotal] = useState(0); // For dynamic total
+  const navigate = useNavigate();
 
-  const handlePickupChange = (event) => {
-    setPickup(event.target.checked);
-  };
-  const handleEditCart = () => {
-    navigate('/cart');  // Redirect to /cart when the button is clicked
-  };
-
-  const handleDeliveryOptionChange = (event) => {
-    setDeliveryOption(event.target.value);
-  };
-
-  const handlePaymentChange = (event) => {
-    setPaymentMethod(event.target.value);
-  };
-
-  const handleNextStep = () => {
-    if (step < 3) {
-      setStep(step + 1);
-    }
-  };
-
-  const handlePreviousStep = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
-  };
-
-  // Sample order data
   const orderItems = [
     {
       id: 1,
@@ -55,6 +29,55 @@ function Checkout() {
       quantity: 1,
     },
   ];
+
+  // Calculate total dynamically based on `orderItems`
+  useEffect(() => {
+    const total = orderItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    setOrderTotal(total.toFixed(2)); // Convert to string with two decimal places
+  }, [orderItems]);
+
+  const handlePickupChange = (event) => setPickup(event.target.checked);
+  const handleEditCart = () => navigate("/cart");
+  const handleDeliveryOptionChange = (event) =>
+    setDeliveryOption(event.target.value);
+  const handlePaymentChange = (event) => setPaymentMethod(event.target.value);
+  const handleNextStep = () => setStep((prevStep) => Math.min(prevStep + 1, 3));
+  const handlePreviousStep = () =>
+    setStep((prevStep) => Math.max(prevStep - 1, 1));
+
+  const createOrder = async () => {
+    // Send order total to Django backend
+    const response = await fetch(
+      "http://localhost:8000/api/paypal/create-order/",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: orderTotal }),
+      }
+    );
+    const data = await response.json();
+    return data.id; // Return PayPal order ID
+  };
+
+  const onApprove = async (data) => {
+    // Capture the payment after approval
+    const response = await fetch(
+      `http://localhost:8000/api/paypal/capture-order/${data.orderID}/`,
+      {
+        method: "POST",
+      }
+    );
+    const captureData = await response.json();
+    if (captureData.status === "COMPLETED") {
+      alert("Payment successful!");
+      // Redirect or update order status here if needed
+    } else {
+      alert("Payment not completed");
+    }
+  };
 
   return (
     <div className="checkout-wrapper">
@@ -131,6 +154,7 @@ function Checkout() {
                   )}
                 </div>
               )}
+
               {!pickup && (
                 <>
                   <div className="form-group">
@@ -189,20 +213,12 @@ function Checkout() {
           {step === 2 && (
             <form className="payment-form">
               <h3>Payment Information</h3>
-              <div className="form-group">
-                <label>
-                  Card Number: <input type="text" required />
-                </label>
-              </div>
-              <div className="form-group">
-                <label>
-                  Expiration Date: <input type="text" required />
-                </label>
-              </div>
-              <div className="form-group">
-                <label>
-                  Security Code: <input type="text" required />
-                </label>
+              <div className="paypal-buttons">
+                <PayPalButtons
+                  style={{ layout: "vertical" }}
+                  createOrder={createOrder}
+                  onApprove={onApprove}
+                />
               </div>
               <div className="button-group">
                 <button
@@ -269,13 +285,15 @@ function Checkout() {
         <div className="order-summary">
           <h3>Order Summary</h3>
           <div className="summary-details">
-            <p>Merchandise: CAD 179.95</p>
+            <p>Merchandise: ${orderTotal}</p>
             <p>Shipping & Handling: CAD 19.95</p>
             <p>Tax: CAD 25.98</p>
             <p className="total">
-              <strong>Order Total: CAD 225.88</strong>
+              <strong>Order Total: CAD {orderTotal}</strong>
             </p>
-            <button className="secondary-button" onClick={handleEditCart}>Edit cart</button>
+            <button className="secondary-button" onClick={handleEditCart}>
+              Edit cart
+            </button>
           </div>
         </div>
       </div>
