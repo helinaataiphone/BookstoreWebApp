@@ -12,6 +12,7 @@ In terminal, run: <br>
 - `npm install react-icons` <br>
 - `npm install react-bootstrap bootstrap` <br>
 - `npm install react-material-ui-carousel` <br>
+- `npm install @paypal/react-paypal-js` <br>
 
 ### Setup:
 
