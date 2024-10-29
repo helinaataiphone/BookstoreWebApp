@@ -181,10 +181,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'BookstoreDB',
-        #'USER': 'your_sql_user',  # Add your SQL Server username
-#'PASSWORD': 'your_password',  # Add your SQL Server password
-        'HOST': 'Helina-Surface-Book\\SQLEXPRESS01',
-        'PORT': '1433',  # Specify the port if needed
+        'HOST': 'LAPTOP-ERGF04OG\SQLEXPRESS01',
+        'PORT': '',  # Specify the port if needed
         'OPTIONS': {
          
             'extra_params': 'TrustServerCertificate=yes;',  # Ensures no SSL errors

@@ -8,3 +8,4 @@ pip install django-allauth
 pip install django-cors-headers
 pip install mssql-django
 pip install stripe
+npm install @paypal/react-paypal-js

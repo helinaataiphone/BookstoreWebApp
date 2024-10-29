@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from ..models import Users
+from ..models import Users, Carts
 from django.contrib.auth.forms import PasswordResetForm
 from ..persmissions import IsNotAuthenticated, IsAdminUser
 from django.contrib.auth.forms import SetPasswordForm
@@ -24,6 +24,7 @@ from django.http import JsonResponse
 class RegisterView(APIView):
     # Allow access only to unauthenticated users
     permission_classes = [IsNotAuthenticated]
+    
     def post(self, request):
         # If the user is already authenticated, prevent registration
         if request.user.is_authenticated:
@@ -62,7 +63,10 @@ class RegisterView(APIView):
         )
         user.save()
 
-        return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+        # Automatically create a cart for the new user
+        Carts.objects.create(userid=user)
+
+        return Response({'message': 'User created and cart initialized successfully'}, status=status.HTTP_201_CREATED)
     
 class LoginView(APIView):
     # Allow access only to unauthenticated users
