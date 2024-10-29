@@ -522,7 +522,7 @@ const Navbar = ({ children }) => {
             <>
               <MenuItem>
                 <Link
-                  to={`/profile/${userId}`} // Use userId here in the drawer
+                  to={`/profile/`} // Use userId here in the drawer
                   style={{ color: "white", textDecoration: "none" }}
                 >
                   Profile
