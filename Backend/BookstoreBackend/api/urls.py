@@ -6,6 +6,7 @@ from .views.order_views import products_in_order, add_order, update_order, user_
 from .views.auth import RegisterView, LoginView, LogoutView, CustomPasswordResetView, CustomPasswordResetConfirmView
 from rest_framework.authtoken.views import obtain_auth_token
 from .views.catergories import add_category, all_categories, update_category 
+from .views.paypal_views import create_paypal_order, capture_paypal_order
 
 
 urlpatterns = [
@@ -57,9 +58,11 @@ urlpatterns = [
     
     path('password-reset/', CustomPasswordResetView.as_view(), name='password_reset'),
     path('password-reset-confirm/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),# Password reset confirmation (step 2, user submits new password)
-    
-   #path('create-checkout-session/', create_checkout_session, name='create-checkout-session'),
+      #path('create-checkout-session/', create_checkout_session, name='create-checkout-session'),
 
-
+   path("paypal/create-order/", create_paypal_order, name="create_paypal_order"),
+    path("paypal/capture-order/<str:order_id>/", capture_paypal_order, name="capture_paypal_order"),
 ]
+ 
+
 

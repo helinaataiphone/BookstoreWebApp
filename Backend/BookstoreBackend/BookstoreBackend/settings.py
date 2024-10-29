@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,15 @@ SECRET_KEY = 'django-insecure-n_+0+u6c0#b-7oq3s&b*i)hx(dt3q^*y7e#v1wia0r9r4$36n&
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# Paypal
+PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
+PAYPAL_CLIENT_SECRET = os.getenv("PAYPAL_CLIENT_SECRET")
+PAYPAL_BASE_URL = "https://sandbox.paypal.com"
+
+PAYPAL_CLIENT_ID=""
+PAYPAL_CLIENT_SECRET=""
+
 
 
 # Application definition
@@ -171,14 +181,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'BookstoreDB',
-        'HOST': 'LAPTOP-ERGF04OG\\SQLEXPRESS01',  # The host as seen in your SSMS
-        'PORT': '',  # SQL Server usually runs on port 1433; leave blank if default
+        #'USER': 'your_sql_user',  # Add your SQL Server username
+#'PASSWORD': 'your_password',  # Add your SQL Server password
+        'HOST': 'Helina-Surface-Book\\SQLEXPRESS01',
+        'PORT': '1433',  # Specify the port if needed
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',  # or the driver version you have installed
-            'extra_params': 'TrustServerCertificate=yes;',  # Helps avoid SSL related errors
+         
+            'extra_params': 'TrustServerCertificate=yes;',  # Ensures no SSL errors
         },
     }
 }
+
 
 
 AUTH_USER_MODEL = 'api.Users'  
