@@ -44,7 +44,7 @@ function Checkout() {
   const handleDeliveryOptionChange = (event) =>
     setDeliveryOption(event.target.value);
   const handlePaymentChange = (event) => setPaymentMethod(event.target.value);
-  const handleNextStep = () => setStep((prevStep) => Math.min(prevStep + 1, 3));
+  const handleNextStep = () => setStep((prevStep) => Math.min(prevStep + 1, 2));
   const handlePreviousStep = () =>
     setStep((prevStep) => Math.max(prevStep - 1, 1));
 
@@ -98,9 +98,6 @@ function Checkout() {
             <div className={`step ${step === 2 ? "active" : ""}`}>
               <span>2</span> Payment and Billing
             </div>
-            <div className={`step ${step === 3 ? "active" : ""}`}>
-              <span>3</span> Review and Place Order
-            </div>
           </div>
 
           {/* Step 1: Shipping and Gift Options */}
@@ -123,48 +120,22 @@ function Checkout() {
                 </label>
               </div>
 
-              {pickup && (
-                <div>
-                  <label>
-                    Payment Method:
-                    <select
-                      onChange={handlePaymentChange}
-                      value={paymentMethod}
-                    >
-                      <option value="">Select</option>
-                      <option value="cash">Cash</option>
-                      <option value="card">Card</option>
-                    </select>
-                  </label>
-                  {paymentMethod && (
-                    <>
-                      <label>
-                        First Name: <input type="text" required />
-                      </label>
-                      <label>
-                        Last Name: <input type="text" required />
-                      </label>
-                      <label>
-                        Email: <input type="email" required />
-                      </label>
-                      <label>
-                        Phone Number: <input type="tel" required />
-                      </label>
-                    </>
-                  )}
-                </div>
-              )}
+              <div className="form-group">
+                <label>
+                  First Name: <input type="text" required />
+                </label>
+                <label>
+                  Last Name: <input type="text" required />
+                </label>
+              </div>
+              <div className="form-group">
+                <label>
+                  Phone Number: <input type="tel" required />
+                </label>
+              </div>
 
-              {!pickup && (
+              {deliveryOption === "homedelivery" && (
                 <>
-                  <div className="form-group">
-                    <label>
-                      First Name: <input type="text" required />
-                    </label>
-                    <label>
-                      Last Name: <input type="text" required />
-                    </label>
-                  </div>
                   <div className="form-group">
                     <label>
                       Street Address: <input type="text" required />
@@ -190,14 +161,17 @@ function Checkout() {
                       </select>
                     </label>
                   </div>
-                  <div className="form-group">
-                    <label>
-                      Phone Number: <input type="tel" required />
-                    </label>
-                  </div>
                 </>
               )}
+
               <div className="button-group">
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={handlePreviousStep}
+                >
+                  Back
+                </button>
                 <button
                   type="button"
                   className="primary-button"
@@ -227,55 +201,6 @@ function Checkout() {
                   onClick={handlePreviousStep}
                 >
                   Back
-                </button>
-                <button
-                  type="button"
-                  className="primary-button"
-                  onClick={handleNextStep}
-                >
-                  Next
-                </button>
-              </div>
-            </form>
-          )}
-
-          {/* Step 3: Review and Place Order */}
-          {step === 3 && (
-            <form>
-              <h3>Review Your Order</h3>
-              <p>Check the details and confirm your purchase.</p>
-              <div className="order-details">
-                {orderItems.map((item) => (
-                  <div key={item.id} className="order-item">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="product-image"
-                    />
-                    <div className="item-info">
-                      <p>
-                        <strong>Name:</strong> {item.name}
-                      </p>
-                      <p>
-                        <strong>Price:</strong> ${item.price.toFixed(2)}
-                      </p>
-                      <p>
-                        <strong>Quantity:</strong> {item.quantity}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="button-group">
-                <button
-                  type="button"
-                  className="secondary-button"
-                  onClick={handlePreviousStep}
-                >
-                  Back
-                </button>
-                <button type="submit" className="primary-button big-button">
-                  Place Order
                 </button>
               </div>
             </form>
